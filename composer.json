@@ -6,4 +6,11 @@
 		"monolog/monolog": ">=1.3.0"
 
 	}
+,
+	"autoload": {
+		"psr-0": {
+			"CTV": "app/"
+		}
+	}	
+
 }
