@@ -1,0 +1,9 @@
+<?php
+
+
+//CTV (via NotORM) uses a PDO to connect to the database. Ref: http://www.php.net/manual/en/intro.pdo.php
+//	This is set up for SQLITE by default, but can be easily changed to MySQL, or any other database.
+define('DB_DSN', 'sqllite:' . __DIR__ . '/database/ctv.sq3');
+define('DB_PASSWORD', null);
+define('DB_USERNAME', null);
+
