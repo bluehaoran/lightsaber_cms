@@ -1,6 +1,8 @@
-CTVTY (Hebrew for 'I write')
-============================
+lightsaber_cms
+==============
+Haoran's new CMS. Every Jedi should build their own lightsaber, every web coder their own CMS. This is mine.
 
+Codename: CTVTY (Hebrew for 'I write')
 
 This is Haoran's new CMS. It's super simple. Based around a UNIX file-system,
 with GIT implemented for revisioning.
