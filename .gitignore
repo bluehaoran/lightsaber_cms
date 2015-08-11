@@ -4,3 +4,4 @@ vendor/*
 vendor
 config.php
 content
+.phpintel
