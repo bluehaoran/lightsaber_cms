@@ -1,16 +1,13 @@
 {
-	"require": {
-		"silex/silex": "dev-master",
-		"vrana/notorm": "dev-master",
-		"querypath/querypath": ">=3.0.0",
-		"monolog/monolog": ">=1.3.0"
-
-	}
-,
-	"autoload": {
-		"psr-0": {
-			"CTV": "app/"
-		}
-	}	
-
+    "name": "bluehaoran/lightsaber_cms",
+    "description": "Every Jedi should build his own lightsaber. I am building my own CMS.",
+    "type": "application",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Haoran Un",
+            "email": "haoran@untoyou.net"
+        }
+    ],
+    "require": {}
 }
