@@ -14,11 +14,14 @@ class CreateAssetsTable extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('document_id')->unsigned()->nullable();
+            $table->integer('document_id')->unsigned();
             $table->string('label');
             $table->binary('data');
             $table->timestamps();
-        }
+
+
+            $table->foreign('document_id')->references('id')->on('documents')->nullable();
+        });
     }
 
     /**

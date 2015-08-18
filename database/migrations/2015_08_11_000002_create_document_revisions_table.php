@@ -16,8 +16,15 @@ class CreateDocumentRevisionsTable extends Migration
             $table->increments('id');
             $table->integer('document_id')->unsigned();
             $table->text('html');
+            $table->integer('author_id')->unsigned();
             $table->timestamps();
-        }
+
+
+
+
+            $table->foreign('document_id')->references('id')->on('documents');
+            $table->foreign('author_id')->references('id')->on('users');
+        });
     }
 
     /**

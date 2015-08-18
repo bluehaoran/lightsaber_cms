@@ -14,12 +14,12 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('document_type');
+            $table->string('type');
             $table->string('title')->index();
             $table->json('data');
             $table->text('html')->index();
             $table->timestamps();
-        }
+        });
     }
 
     /**

@@ -17,7 +17,7 @@ class CreateTagsTable extends Migration
             $table->string('title');
             $table->boolean('public');
             $table->timestamps();
-        }
+        });
     }
 
     /**

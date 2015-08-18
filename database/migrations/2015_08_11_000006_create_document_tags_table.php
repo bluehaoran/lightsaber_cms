@@ -18,8 +18,10 @@ class CreateDocumentTagsTable extends Migration
             $table->integer('tag_id')->unsigned();
             $table->timestamps();
 
+            $table->foreign('document_id')->references('id')->on('document');
+            $table->foreign('tag_id')->references('id')->on('tag');
             $table->unique(['document_id', 'tag_id']);
-        }
+        });
     }
 
     /**
