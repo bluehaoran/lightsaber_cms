@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('document', 'DocumentController');
+Route::resource('tag', 'TagController');
+Route::resource('asset', 'AssetController');
+Route::resource('document_revision', 'DocumentRevisionController');
