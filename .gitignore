@@ -5,3 +5,5 @@ vendor
 config.php
 content
 .phpintel
+storage/*.sqlite
+.env
