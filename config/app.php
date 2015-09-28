@@ -144,6 +144,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // ZackKitzmiller\TinyServiceProvider::class,
+
+        Roumen\Feed\FeedServiceProvider::class,
     ],
 
     /*
@@ -192,6 +195,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+
+        // 'Tiny' => ZackKitzmiller\Facades\Tiny::class,
+        'Feed' => Roumen\Feed\Facades\Feed::class,
     ],
 
 ];
