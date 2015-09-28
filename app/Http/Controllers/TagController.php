@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Tag;
+use League\Tiny;
+
+use App\DB\Tag as TagModel;
 
 class TagController extends Controller
 {
@@ -18,8 +21,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
-        Tag::all();
+        Log::debug('TagController::index()');
+        $list = TagModel::all();
+        return response()->json($list);
     }
 
     /**
@@ -29,7 +33,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        Log::debug('TagController::create()');
+        $tag = new TagModel();
+        return response()->json($tag);
     }
 
     /**
@@ -40,7 +46,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
+        Log::debug('TagController::store()');
         //
+
+        $tag = new TagModel();
+        $tag->title = $request->title;
+        $tag->public = $request->public ? true : false;
+        $tag->save();
+
+        return true; //TODO: not the right value
+
     }
 
     /**
@@ -51,9 +66,13 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tag = Tag::find($id);
+        Log::debug('TagController::show()');
+        $tag = TagModel::find($id);
+
+        $tag->spam = Tiny::to($tag->id);
+
         if (!$tag) {
-            return response(null, '204');
+            return response(null, 204)->json([]);
         }
         return response()->json($tag);
     }
@@ -66,7 +85,12 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        Log::debug('TagController::edit()');
+
+        $response = ['_token' => csrf_token()];
+        
+
+        return response()->json($response);
     }
 
     /**
@@ -78,7 +102,22 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Log::debug('TagController::update()');
+        try {
+            $tag = TagModel::findOrFail($id);
+
+            $tag->title = $request->title;
+            $tag->public = $request->public ? true : false;
+            $tag->save();
+
+            return null;
+
+        } catch (Exception $e) {
+            return response(null, 204)->json([]);
+        }
+
+
+
     }
 
     /**
@@ -89,6 +128,14 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Log::debug('TagController::destroy()');
+        
+        try {
+            $tag = TagModel::findOrFail($id);
+            $tag->delete();
+
+        } catch (Exception $e) {
+            return response(null, 204)->json([]);
+        }
     }
 }
