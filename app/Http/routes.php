@@ -19,3 +19,8 @@ Route::resource('document', 'DocumentController');
 Route::resource('tag', 'TagController');
 Route::resource('asset', 'AssetController');
 Route::resource('document_revision', 'DocumentRevisionController');
+
+
+Route::get('feed/rss', 'FeedController@rss');
+Route::get('feed/atom', 'FeedController@atom');
+
