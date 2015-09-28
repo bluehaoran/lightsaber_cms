@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\DB\Document as DocumentModel;
 
 class DocumentController extends Controller
 {
@@ -16,7 +17,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $list = Document::all();
+        $list = DocumentModel::all();
 
         return response()->json($list);
     }
@@ -28,7 +29,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        $blank_document = new Document();
+        $blank_document = new DocumentModel();
         return response()->json($blank_document);
     }
 
@@ -43,7 +44,7 @@ class DocumentController extends Controller
         //
         try {
 
-            $new_document = new Document();
+            $new_document = new DocumentModel();
 
             //TODO: set values
 
@@ -66,10 +67,10 @@ class DocumentController extends Controller
     public function show($id)
     {
         try {
-            $document = Document::findOrFail($id);
+            $document = DocumentModel::findOrFail($id);
             return response()->json($document);
         } catch (Exception $e) {
-            return response(null, 204)->json([]);            
+            return response(null, 204)->json([]);
         }
     }
 
